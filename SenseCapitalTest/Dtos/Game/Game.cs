@@ -79,7 +79,11 @@
                 return "Cell is busy!";
 
             }
-            
+            if (Moves == 7)
+            {
+                IsFinished = true;
+                return "Draw";
+            }
             Field[x, y] = mark;
             FirstMove = false;
             if (checkWinner(mark))

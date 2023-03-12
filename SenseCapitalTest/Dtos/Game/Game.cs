@@ -13,6 +13,7 @@
 
         public bool IsFinished = false;
 
+        public int Moves { get; set; } = 0;
         //инициальзируем поле
         public Game()
         {
@@ -78,7 +79,7 @@
                 return "Cell is busy!";
 
             }
-
+            
             Field[x, y] = mark;
             FirstMove = false;
             if (checkWinner(mark))
@@ -92,13 +93,19 @@
             //ответ не приходит, пока второй игрок не сделает ход
             while (Last == mark)
             {
+                if (Moves == 7)
+                {
+                    IsFinished = true;
+                    return "Draw";
+                }
                 if (IsFinished)
                 {
 
                     return "winnner" + Winner;
                 }
-            }
 
+            }
+            Moves++;
             return " ";
 
         }
